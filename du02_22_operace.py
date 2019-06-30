@@ -17,6 +17,7 @@ elif operace == '*':
 elif operace == '/':
     if druhe_cislo == 0:
         print('Dělení nulou nelze. ')
+        exit()
     else:
         vysledek = prvni_cislo % druhe_cislo
 else:
