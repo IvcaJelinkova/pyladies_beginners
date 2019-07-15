@@ -19,9 +19,13 @@
 
 from random import choice
 
-vybrane_slovo = choice(['trávník', 'stromek', 'stavení', 'čokoláda', 'ananas'])
-hadane_slovo = len(vybrane_slovo) * '_ '
-neuspesne_pokusy = 0
+
+def vyber_slovo():
+    """Vybere slovo k hádání a nahradí písmena podtržítky. Vyresetuje neúspěšné pokusy. """
+    vybrane_slovo = choice(['trávník', 'stromek', 'stavení', 'čokoláda', 'ananas'])
+    hadane_slovo = len(vybrane_slovo) * '_ '
+    neuspesne_pokusy = 0
+    return vybrane_slovo, hadane_slovo, neuspesne_pokusy
 
 
 def zamen(hadane_slovo, pozice, hadane_pismeno):
@@ -30,6 +34,17 @@ def zamen(hadane_slovo, pozice, hadane_pismeno):
     prostredek = hadane_pismeno
     konec = hadane_slovo[pozice + 1: ]
     return zacatek + prostredek + konec
+
+
+def mozne_vstupy():
+    """Kontroluje, zda hádané písmeno je mezi možnými vstupy do tajenky. Nepřípustné jsou číslice,
+    shluky písmen a jiné znaky. """
+    hadane_pismeno = input('\nHádané písmeno: ')
+    while True:
+        if hadane_pismeno in "aábcčdďeéěfghchiíjklmnňoópqrřsštťuúůvwxyýzž" and len(hadane_pismeno) == 1:
+            return hadane_pismeno
+        else:
+            hadane_pismeno = input("Zadávej pouze jednotlivá písmena. Hádané písmeno: ")
 
 
 def obrazek(level):
@@ -140,14 +155,17 @@ def pozice_pismene(vybrane_slovo, hadane_pismeno):
     return seznam_vyskytu_pismene
 
 
+
+
 print('\n\n\n' + obrazek(0))
+vybrane_slovo, hadane_slovo, neuspesne_pokusy = vyber_slovo()
 print(hadane_slovo)
 
 
 while True:
     if '_' in hadane_slovo:
         if neuspesne_pokusy < 9:
-            hadane_pismeno = input('\nHádané písmeno: ')
+            hadane_pismeno = mozne_vstupy()
             pocet_vyskytu = 0
             if hadane_pismeno in vybrane_slovo:
                 print('Trefa! ')
