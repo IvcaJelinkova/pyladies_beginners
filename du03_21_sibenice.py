@@ -37,7 +37,7 @@ def zamen(hadane_slovo, pozice, hadane_pismeno):
 
 
 def mozne_vstupy():
-    """Kontroluje, zda hádané písmeno je mezi možnými vstupy do tajenky. Nepřípustné jsou číslice,
+    """Ptá se na hádané písmeno. Kontroluje, zda hádané písmeno je mezi možnými vstupy do tajenky. Nepřípustné jsou číslice,
     shluky písmen a jiné znaky. """
     hadane_pismeno = input('\nHádané písmeno: ')
     while True:
@@ -157,9 +157,33 @@ def pozice_pismene(vybrane_slovo, hadane_pismeno):
 
 
 
-print('\n\n\n' + obrazek(0))
-vybrane_slovo, hadane_slovo, neuspesne_pokusy = vyber_slovo()
-print(hadane_slovo)
+def opakuj_hru(otazka):
+    """Zeptá se na otázku, zda chci hrát znovu a na základě odpovědi ano/ne vrátí True/False. """
+    odpoved = input(otazka).lower()
+    while True:
+        if odpoved in ('ano', 'a'):
+            return True
+        elif odpoved in ('ne', 'n'):
+            return False
+        odpoved = input('Zadej ano nebo ne: ').lower()
+
+
+
+def zacatek_hry():
+    """Nakreslí úvodní obrázek šibenice. Vypíše pomlčky hádaného slova. Vynuluje počet pokusů. """
+    print('\n\n\n' + obrazek(0))
+    vybrane_slovo, hadane_slovo, neuspesne_pokusy = vyber_slovo()
+    print('Hádané slovo:', hadane_slovo)
+    print('Neúspěšný pokusy:', neuspesne_pokusy)
+    return vybrane_slovo, hadane_slovo, neuspesne_pokusy
+
+vybrane_slovo, hadane_slovo, neuspesne_pokusy = zacatek_hry()
+
+# print('\n\n\n' + obrazek(0))
+# vybrane_slovo, hadane_slovo, neuspesne_pokusy = vyber_slovo()
+# print('Hádané slovo:', hadane_slovo)
+# print('Vybrané slovo:', vybrane_slovo)
+# print('Neúspěšný pokusy:', neuspesne_pokusy)
 
 
 while True:
@@ -183,9 +207,16 @@ while True:
                 print('\nAktuální hádané slovo:   '+ hadane_slovo)
         else:
             print('\nProhrál jsi. Šibenice splnila účel. ')
-            break
+            vybrane_slovo, hadane_slovo, neuspesne_pokusy = opakuj_hru()
+            vyber_slovo()
     else:
         print('\nVyhrál jsi! Gratuluji. ')
-        break
+        if opakuj_hru('Chceš hrát znovu? '):
+            print('OK. ')
+            vybrane_slovo, hadane_slovo, neuspesne_pokusy = zacatek_hry()
+        else:
+            print('Škoda. ')
+            break
+
 
 
