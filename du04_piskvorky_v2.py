@@ -1,5 +1,8 @@
 # 1D piškvorky
 
+from random import randrange
+
+
 # řádek: 20 políček, vítěz: 3 symboly stejné
 
 # 1)
@@ -22,7 +25,7 @@ def vyhodnot(pole):
 
     return stav_hry
 
-print('Stav hry je: ' + vyhodnot('jsijdsiodjo'))
+#print('Stav hry je: ' + vyhodnot('jsijdsiodjo'))
 
 
 # 2)
@@ -90,8 +93,31 @@ def tah_hrace(pole, symbol):
             print('Zadej číslo! ')
 
 
-print(tah_hrace('--------------------','x'))
+#print(tah_hrace('--------------------','x'))
 
 
-# 4)
+# 4) Napiš funkci tah_pocitace(pole, symbol), která dostane řetězec s herním polem a symbol, vybere pozici, na kterou hrát, a vrátí herní pole se
+# zaznamenaným tahem počítače.
+#
+# Použij jednoduchou náhodnou „strategii”:
+#
+# OK Vyber číslo od 0 do 19.
+# OK Pokud je dané políčko volné, hrej na něj.
+# OK Pokud ne, opakuj od bodu 1.
+
+def tah_pocitace(pole, symbol):
+    """Vrátí herní pole se zaznamenaným tahem počítače
+
+    `pole` je herní pole, na které se hraje.
+    `symbol` může být 'x' nebo 'o', podle toho jestli hráč hraje za křížky nebo za kolečka."""
+    if '-' not in pole:
+        return print('Není kam hrát! ')
+    while True:
+        pozice = randrange(0, 20)
+        if pole[pozice] == '-':
+            pole = tah(pole, pozice, symbol)
+            return pole
+
+print(tah_pocitace('xxxxxxxxxx--xxxxxxxx', 'o'))
+
 
