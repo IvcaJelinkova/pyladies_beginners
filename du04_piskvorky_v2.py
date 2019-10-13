@@ -52,9 +52,7 @@ def tah(pole, pozice, symbol):
         raise ValueError("Pozice může být pouze 0–19, na pozici musí být '-', hrát se smí pouze 'x' nebo 'o'.")
     else:
         zacatek = pole[0:pozice]
-        konec = pole[pozice+1:]
-        
-        #print(pole[pozice])
+        konec = pole[pozice + 1:]
         pole = zacatek + symbol + konec
 
         return pole
@@ -77,14 +75,10 @@ def tah_hrace(pole, symbol):
         pozice = input('Na jakou pozici chceš hrát? (Zadej číslo 0–19.) ')
         try:
             pozice = int(pozice)
-            #if (pozice < 0) or (pozice > 19):      # toto je super, ale mám to tu 2x!!
-            #    print('Zadej číslo od 0 do 19! ')
-            #    pass
-            print("došlo to sem")
+
             # vychytat chyby a zeptat se znovu na pozici
             try:
                 pole = tah(pole, pozice, symbol)
-                print("jsem tu")
                 return pole
             except ValueError:
                 print("Nadávám ti! Nauč se hrát! :-)")
@@ -118,6 +112,37 @@ def tah_pocitace(pole, symbol):
             pole = tah(pole, pozice, symbol)
             return pole
 
-print(tah_pocitace('xxxxxxxxxx--xxxxxxxx', 'o'))
+#print(tah_pocitace('xxxxxxxxxx--xxxxxxxx', 'o'))
+
+
+
+# 5) Napiš funkci piskvorky1d, která:
+#
+# Vytvoří řetězec s herním polem
+# Stále dokola:
+# zavolá volá funkci tah_hrace, a výsledek uloží jako nové pole
+# vypíše stav hry
+# zavolá volá funkci tah_pocitace, a výsledek uloží jako nové pole
+# vypíše stav hry
+# Zatím neřeš konec hry.
+
+def piskvorky1d():
+    """Vytvoří řetězec s herním polem, volá funkci tah_hrace, uloží nové pole, vypíše stav hry.
+    Volá funkci tah_pocitace, uloží nové pole, vypíše stav hry."""
+    pole = 20 * '-'
+
+    while '-' in pole:
+        pole = tah_hrace(pole, 'x')
+        print('Herní pole po tahu hráče je: ' + pole)
+
+        pole = tah_pocitace(pole, 'o')
+        print('Herní pole po tahu PC je: ' + pole)
+
+    return print('Není kam hrát! ')
+
+piskvorky1d()
+
+
+
 
 
