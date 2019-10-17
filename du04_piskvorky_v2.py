@@ -71,6 +71,7 @@ def tah(pole, pozice, symbol):
 # OK Pokud uživatel zadá špatný vstup (nečíslo, záporné číslo, obsazené políčko apod.), funkce mu vynadá a zeptá se znova.
 
 def tah_hrace(pole, symbol):
+    """Dostane řetězec s herním polem a symbol. """
     while True:
         pozice = input('Na jakou pozici chceš hrát? (Zadej číslo 0–19.) ')
         try:
@@ -126,6 +127,11 @@ def tah_pocitace(pole, symbol):
 # vypíše stav hry
 # Zatím neřeš konec hry.
 
+
+# 6) Teď pošéfuj konec hry. Když někdo vyhraje nebo dojde k remíze, cyklus se ukončí a vypíše se výsledek – třeba s gratulací nebo povzbuzující zpráva.
+# Stav hry kontroluj po každém tahu.
+
+
 def piskvorky1d():
     """Vytvoří řetězec s herním polem, volá funkci tah_hrace, uloží nové pole, vypíše stav hry.
     Volá funkci tah_pocitace, uloží nové pole, vypíše stav hry."""
@@ -134,9 +140,17 @@ def piskvorky1d():
     while '-' in pole:
         pole = tah_hrace(pole, 'x')
         print('Herní pole po tahu hráče je: ' + pole)
+        if vyhodnot(pole) == 'x':
+            return print('Vyhrál jsi. Gratuluji. :-) ')
+        elif vyhodnot(pole) == '!':
+            return print('Remíza. ')
 
         pole = tah_pocitace(pole, 'o')
         print('Herní pole po tahu PC je: ' + pole)
+        if vyhodnot(pole) == 'o':
+            return print('Vyhrál počítač. Hodně štěstí příště. :-) ')
+        elif vyhodnot(pole) == '!':
+            return print('Remíza. ')
 
     return print('Není kam hrát! ')
 
