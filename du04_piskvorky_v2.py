@@ -87,7 +87,6 @@ def tah_hrace(pole, symbol):
         except ValueError:
             print('Zadej číslo! ')
 
-
 #print(tah_hrace('--------------------','x'))
 
 
@@ -132,29 +131,45 @@ def tah_pocitace(pole, symbol):
 # Stav hry kontroluj po každém tahu.
 
 
-def piskvorky1d():
+
+def piskvorky1d(symbol, symbol_pc):
     """Vytvoří řetězec s herním polem, volá funkci tah_hrace, uloží nové pole, vypíše stav hry.
     Volá funkci tah_pocitace, uloží nové pole, vypíše stav hry."""
     pole = 20 * '-'
 
     while '-' in pole:
-        pole = tah_hrace(pole, 'x')
+        pole = tah_hrace(pole, symbol)
         print('Herní pole po tahu hráče je: ' + pole)
-        if vyhodnot(pole) == 'x':
+        if vyhodnot(pole) == symbol:
             return print('Vyhrál jsi. Gratuluji. :-) ')
         elif vyhodnot(pole) == '!':
             return print('Remíza. ')
 
-        pole = tah_pocitace(pole, 'o')
+        pole = tah_pocitace(pole, symbol_pc)
         print('Herní pole po tahu PC je: ' + pole)
-        if vyhodnot(pole) == 'o':
+        if vyhodnot(pole) == symbol_pc:
             return print('Vyhrál počítač. Hodně štěstí příště. :-) ')
         elif vyhodnot(pole) == '!':
             return print('Remíza. ')
 
     return print('Není kam hrát! ')
 
-piskvorky1d()
+
+
+symbol = input('Chceš hrát za "x" nebo za "o"? ')
+while symbol not in ('x', 'o'):
+    symbol = input('Chceš hrát za "x" nebo za "o"? ')
+
+if symbol == 'x':
+    print('Hraješ za "x". ')
+    symbol_pc = 'o'
+else:
+    print('Hraješ za "o". ')
+    symbol_pc = 'x'
+
+
+
+piskvorky1d(symbol, symbol_pc)
 
 
 
