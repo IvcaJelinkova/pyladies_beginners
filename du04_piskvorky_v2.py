@@ -15,15 +15,13 @@ from random import randrange
 
 def vyhodnot(pole):
     if 'xxx' in pole:
-        stav_hry = 'x'
+        return 'x'
     elif 'ooo' in pole:
-        stav_hry = 'o'
+        return 'o'
     elif '-' not in pole:
-        stav_hry = "!"
+        return "!"
     else:
-        stav_hry = '-'
-
-    return stav_hry
+        return '-'
 
 #print('Stav hry je: ' + vyhodnot('jsijdsiodjo'))
 
@@ -48,8 +46,8 @@ def tah(pole, pozice, symbol):
     'symbol' je 'x' nebo 'o' podle toho, za co se hraje
     Skončí ValueError, pokud se hraje mimo pole, pokud je políčko obsazené, chceme hrát jiným symbolem. """
 
-    if ((pozice < 0) or (pozice > 19) or (pole[pozice] != '-') or (symbol not in ('x', 'o'))):
-        raise ValueError("Pozice může být pouze 0–19, na pozici musí být '-', hrát se smí pouze 'x' nebo 'o'.")
+    if ((pozice < 0) or (pozice > 9) or (pole[pozice] != '-') or (symbol not in ('x', 'o'))):
+        raise ValueError("Pozice může být pouze 0–9, na pozici musí být '-', hrát se smí pouze 'x' nebo 'o'.")
     else:
         zacatek = pole[0:pozice]
         konec = pole[pozice + 1:]
@@ -73,7 +71,7 @@ def tah(pole, pozice, symbol):
 def tah_hrace(pole, symbol):
     """Dostane řetězec s herním polem a symbol. """
     while True:
-        pozice = input('Na jakou pozici chceš hrát? (Zadej číslo 0–19.) ')
+        pozice = input('Na jakou pozici chceš hrát? (Zadej číslo 0–9.) ')
         try:
             pozice = int(pozice)
 
@@ -99,18 +97,68 @@ def tah_hrace(pole, symbol):
 # OK Pokud je dané políčko volné, hrej na něj.
 # OK Pokud ne, opakuj od bodu 1.
 
-def tah_pocitace(pole, symbol):
+# 8) Vylepši tah_pocitace :-)
+
+def tah_pocitace(pole, symbol_pc):
     """Vrátí herní pole se zaznamenaným tahem počítače
 
     `pole` je herní pole, na které se hraje.
-    `symbol` může být 'x' nebo 'o', podle toho jestli hráč hraje za křížky nebo za kolečka."""
+    `symbol` může být 'x' nebo 'o', podle toho jestli hráč hraje za křížky nebo za kolečka.
+    Využívám šablony určující varianty situace ve hře.
+    'H' je symbol hráče,
+    'P' je symbol počítače. """
+    print('Symbol PC je: ', symbol_pc)
+    i = 1
+    sablony = [
+        'P!P', 'PP!', '!PP',
+        'HH!', '!HH', 'H!H',
+        'H!-', '-!H', '!H-',
+        'P!-', '-!P', '!P-'
+    ]
+
     if '-' not in pole:
-        return print('Není kam hrát! ')
-    while True:
-        pozice = randrange(0, 20)
+        return 'Není kam hrát! '
+
+    if symbol_pc == 'x':
+        symbol = 'o'
+        print('Symbol hráče1 je: ', symbol)
+    else:
+        symbol_pc = 'o'
+        symbol = 'x'
+        print('Symbol hráče2 je: ', symbol)
+
+    for sablona in sablony:
+        co_hledam = sablona.replace('H', symbol).replace('P', symbol_pc).replace('!', '-')
+        cim_to_nahradim = sablona.replace('H', symbol).replace('P', symbol_pc).replace('!', symbol_pc)
+        print('co hledam:', co_hledam, ', čím to nahradím: ', cim_to_nahradim)
+
+        if co_hledam in pole:
+            print('index co_hledam:' + str(pole.index(co_hledam)))
+            print('index !:' + str(sablona.index('!')))
+            pozice = pole.index(co_hledam) + sablona.index('!')
+
+            return tah(pole, pozice, symbol_pc)
+
+    while '-' in pole:
+        pozice = randrange(0, 10)
+        print('Hraju random.')
         if pole[pozice] == '-':
-            pole = tah(pole, pozice, symbol)
+            pole = tah(pole, pozice, symbol_pc)
             return pole
+
+    #co chci:
+    #if 'xx-' in pole:
+        #nahraď 'xx-' tímto 'xxx'
+
+    # while True:
+    #     for sablona in sablony:
+    #         co_nahradim = sablona.replace('M', symbol).replace('P', symbol_pc)
+    #         print(co_nahradim)
+    #     pass
+
+
+
+
 
 #print(tah_pocitace('xxxxxxxxxx--xxxxxxxx', 'o'))
 
@@ -135,7 +183,7 @@ def tah_pocitace(pole, symbol):
 def piskvorky1d(symbol, symbol_pc):
     """Vytvoří řetězec s herním polem, volá funkci tah_hrace, uloží nové pole, vypíše stav hry.
     Volá funkci tah_pocitace, uloží nové pole, vypíše stav hry."""
-    pole = 20 * '-'
+    pole = 10 * '-'
 
     while '-' in pole:
         pole = tah_hrace(pole, symbol)
@@ -143,19 +191,19 @@ def piskvorky1d(symbol, symbol_pc):
         if vyhodnot(pole) == symbol:
             return print('Vyhrál jsi. Gratuluji. :-) ')
         elif vyhodnot(pole) == '!':
-            return print('Remíza. ')
+            return print('Hra skončila remízou. ')
 
         pole = tah_pocitace(pole, symbol_pc)
         print('Herní pole po tahu PC je: ' + pole)
         if vyhodnot(pole) == symbol_pc:
             return print('Vyhrál počítač. Hodně štěstí příště. :-) ')
         elif vyhodnot(pole) == '!':
-            return print('Remíza. ')
+            return print('Hra skončila remízou. ')
 
     return print('Není kam hrát! ')
 
 
-
+# 7) kdo hraje za "x" a kdo za "o":
 symbol = input('Chceš hrát za "x" nebo za "o"? ')
 while symbol not in ('x', 'o'):
     symbol = input('Chceš hrát za "x" nebo za "o"? ')
