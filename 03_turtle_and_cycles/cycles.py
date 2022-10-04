@@ -1,5 +1,6 @@
 from turtle import forward, left, right, penup, pendown, exitonclick
 
+
 for salute in 'Ahoj', 'Hello', 'Hola', 'Hei', 'SYN':
 	print(salute + '!')
 
@@ -50,8 +51,13 @@ pendown()
 
 
 
-# hexagon 6times: 
+# hexagon 6times / flower:  
 for i in range(6): 
+	for i in range(6): 
+		forward(30)
+		right(60)
+
+	right(120)
 	forward(30)
 	left(60)
 
