@@ -28,6 +28,33 @@ for _ in range(3):
 	left(20)
 
 
+penup()
+forward(150)
+right(60)
+pendown()
+
+
+
+# stairs: 
+for _ in range(6): 
+	forward(30)
+	left(90)
+	forward(30)
+	right(90)
+
+
+penup()
+forward(150)
+right(60)
+pendown()
+
+
+
+# hexagon 6times: 
+for i in range(6): 
+	forward(30)
+	left(60)
+
 exitonclick()
 
 
