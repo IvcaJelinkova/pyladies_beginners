@@ -2,7 +2,7 @@ from tkinter import N
 from turtle import forward, right, left, penup, pendown, exitonclick, speed
 import math
 
-speed(10)
+speed(20)
 """ 
 left(180)
 penup()
@@ -73,7 +73,7 @@ penup()
 right(175)
 forward(600)
 pendown()
-""" 
+
 
 # regular n-gon, n from the user: 
 
@@ -94,7 +94,54 @@ while True:
             forward(side)
             left(180 - angle)
          break
+        
 
+
+
+
+# regular 100-gon: 
+number_of_sides = 100
+angle = 180 * (1 - 2 / number_of_sides)
+for i in range(number_of_sides): 
+    side = 200 / number_of_sides
+    forward(side)
+    left(180 - angle)
+
+penup()
+forward(150)
+pendown()
+
+
+# angular spiral: 
+for i in range(40): 
+    left(90)
+    forward(2 * i)
+
+
+# ___
+penup()
+left(170)
+forward(250)
+pendown()
+
+
+# even more angular spiral too: 
+side = 5
+for i in range(50): 
+    left(45)
+    forward(side)
+    side += 2
+
+""" 
+
+# spiral: 
+angle = 10
+side = 0.05
+for i in range(1,400): 
+    forward(side)
+    left(angle)
+    side += 0.05
+    
 
 exitonclick()
 
