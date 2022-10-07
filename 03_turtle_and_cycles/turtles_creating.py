@@ -3,6 +3,7 @@ from turtle import forward, right, left, penup, pendown, exitonclick, speed
 import math
 
 speed(10)
+""" 
 left(180)
 penup()
 forward(350)
@@ -67,6 +68,32 @@ for number_of_sides in range(5, 9):
 
 
 
+# ___
+penup()
+right(175)
+forward(600)
+pendown()
+""" 
+
+# regular n-gon, n from the user: 
+
+while True: 
+    number_of_sides = input('How many sides would have your n-gon? ')
+
+    try: 
+        number_of_sides = int(number_of_sides)
+    except ValueError: 
+        print('Toto není číslo! ')
+    else: 
+         if number_of_sides == 0: 
+            print('Nula stran neumím... ')
+            continue
+         angle = 180 * (1 - 2 / number_of_sides)
+         for i in range(number_of_sides): 
+            side = 200 / number_of_sides
+            forward(side)
+            left(180 - angle)
+         break
 
 
 exitonclick()
