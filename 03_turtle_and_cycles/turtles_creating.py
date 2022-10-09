@@ -3,11 +3,13 @@ from turtle import forward, right, left, penup, pendown, exitonclick, speed
 import math
 
 speed(20)
-""" 
+
 left(180)
 penup()
 forward(350)
-right(180)
+right(90)
+forward(200)
+right(90)
 pendown()
 
 # triangle: 
@@ -76,7 +78,6 @@ pendown()
 
 
 # regular n-gon, n from the user: 
-
 while True: 
     number_of_sides = input('How many sides would have your n-gon? ')
 
@@ -95,7 +96,11 @@ while True:
             left(180 - angle)
          break
         
-
+# ___
+penup()
+left(140)
+forward(120)
+pendown()
 
 
 
@@ -108,7 +113,8 @@ for i in range(number_of_sides):
     left(180 - angle)
 
 penup()
-forward(150)
+left(40)
+forward(180)
 pendown()
 
 
@@ -120,8 +126,8 @@ for i in range(40):
 
 # ___
 penup()
-left(170)
-forward(250)
+right(150)
+forward(350)
 pendown()
 
 
@@ -132,7 +138,14 @@ for i in range(50):
     forward(side)
     side += 2
 
-""" 
+
+#____
+penup()
+left(70)
+forward(350)
+pendown()
+
+
 
 # spiral: 
 angle = 10
@@ -141,6 +154,20 @@ for i in range(1,400):
     forward(side)
     left(angle)
     side += 0.05
+
+
+
+# ____
+penup()
+forward(200)
+pendown()
+
+
+# 18 squares rotated by 20 degrees: 
+for side in range(4): 
+    forward(15)
+    
+
     
 
 exitonclick()
