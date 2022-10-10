@@ -10,4 +10,15 @@ word = input('Enter a word to swap: ')
 position = int(input('Enter a position on which I will swap the letter: '))
 letter = input('Enter a letter by which I will swap: ')
 
-print('Nové slovo je: ', swap_the_letter(word, position, letter))
+print('Nové slovo je: ', swap_the_letter(word, position, letter), '\n')
+
+
+# initials: 
+def initials(name, surname): 
+    """It takes name and surname and return initials. """
+    return name[0] + surname[0]
+
+
+name = input('Enter name: ')
+surname = input('Enter surname: ')
+print('Initials are: ', initials(name, surname).upper())
