@@ -164,8 +164,11 @@ pendown()
 
 
 # 18 squares rotated by 20 degrees: 
-for side in range(4): 
-    forward(15)
+for square in range(18):
+    for side in range(4): 
+        forward(15)
+        left(90)
+    left(20)
     
 
     
