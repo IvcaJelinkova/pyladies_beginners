@@ -104,7 +104,7 @@ pendown()
 
 
 
-# regular 100-gon: 
+# regular 100-gon / circle: 
 number_of_sides = 100
 angle = 180 * (1 - 2 / number_of_sides)
 for i in range(number_of_sides): 
