@@ -75,6 +75,7 @@ penup()
 right(175)
 forward(600)
 pendown()
+right(5)
 
 
 # regular n-gon, n from the user: 
@@ -98,7 +99,7 @@ while True:
         
 # ___
 penup()
-left(140)
+left(150)
 forward(120)
 pendown()
 
@@ -113,7 +114,7 @@ for i in range(number_of_sides):
     left(180 - angle)
 
 penup()
-left(40)
+left(43)
 forward(180)
 pendown()
 
@@ -150,7 +151,7 @@ pendown()
 # spiral: 
 angle = 10
 side = 0.05
-for i in range(1,400): 
+for i in range(1,300): 
     forward(side)
     left(angle)
     side += 0.05
@@ -159,7 +160,8 @@ for i in range(1,400):
 
 # ____
 penup()
-forward(200)
+right(45)
+forward(150)
 pendown()
 
 
