@@ -1,4 +1,30 @@
-# is this string in another string? 
+# content: 
+""" 1) is this string in another string?
+    2) are you male or female by last name
+    3) count a letter in text
+    4) 'a' 4times under itself
+    
+    5)      Line 0
+            Line 1
+            Line 2
+            Line 3
+            Line 4
+    6)        
+        0 squared is 0
+        1 squared is 1
+        2 squared is 4
+        3 squared id 9
+        4 squared id 16
+    7) 
+        X X X X X 
+        X X X X X
+        X X X X X 
+        X X X X X
+        X X X X X 
+    """
+
+""" 
+# ad1) is this string in another string? 
 string1 = input('Enter a string to know, if it\'s in the next string: ').lower()
 string2 = input('Enter the second string: ').lower()
 if string1 in string2: 
@@ -9,16 +35,16 @@ else:
     print('No, the first string is not in the second or conversely. \n')
 
 
-# are you male or female by last name: 
+# ad2) are you male or female by last name: 
 surname = input('Enter your surname: ').lower()
 
-if surname[-3:] in ('ová', 'ova'): 
+if surname[-1:] in ('a', 'á'): 
     print('You are female. \n')
 else: 
     print('You are male. \n')
+""" 
 
-
-# count a letter in text: 
+# ad3) count a letter in text: 
 text = """Léta tam stál, stojí tam dál
 pivovar u cesty, každý ho znal
 léta tam stál, stát bude dál
@@ -35,16 +61,17 @@ count = text.count(letter)
 print(f'Count of a letter {letter} in your text: ', count, '\n')
 
 
-
-# 'a' 4times under itself: 
+""" 
+# ad4) 'a' 4times under itself: 
 for i in range(4): 
     print('a')
 
 print()
+""" 
 
-
-# print:    Line 0
-"""         Line 1
+# ad5) print:    
+"""         Line 0
+            Line 1
             Line 2
             Line 3
             Line 4""" 
@@ -56,9 +83,28 @@ print()
 
 
 
-# print: 
+# ad6) print: 
 """ 0 squared is 0
     1 squared is 1
     2 squared is 4
     3 squared id 9
     4 squared id 16"""
+
+for number_of_line in range(5): 
+    print(f'{number_of_line} squared is {number_of_line ** 2}')
+
+print()
+
+# ad7) print: 
+""" X X X X X 
+    X X X X X
+    X X X X X 
+    X X X X X
+    X X X X X 
+condition: every print print only one 'X' """
+
+for number_of_line in range(5): 
+    for number_of_char in range(5): 
+        print('X ', end='')
+    print()
+
