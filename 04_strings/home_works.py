@@ -87,15 +87,35 @@ letter = 'a'
 count = text.count(letter)
 print(f'Count of a letter {letter} in your text: ', count, '\n')
 
+while True: 
+    number_of_lines = input('How many lines do you want? ')
+    number_of_columns = input('How many columns do you want? ')
+    try: 
+        #print('sem v try')
+        number_of_lines = int(number_of_lines)
+        number_of_columns = int(number_of_columns)
 
-""" 
+    except TypeError: 
+        print('Enter numbers bigger than 0! \n')
+        continue
+    except ValueError: 
+        print('Enter numbers > 0! \n')
+        continue
+
+    else: 
+        #print('teď v else')
+        if number_of_lines > 0 and number_of_columns > 0: 
+            break
+       
+
+ 
+
+print('\n \t a: ')
 # ad4) 'a' 4times under itself: 
-for i in range(4): 
+for i in range(number_of_lines): 
     print('a')
 
-print()
-""" 
-
+print('\n \t Line 0 - ...: ')
 # ad5) print:    
 """         Line 0
             Line 1
@@ -103,13 +123,12 @@ print()
             Line 3
             Line 4""" 
 
-for number_of_line in range(5): 
+for number_of_line in range(number_of_lines): 
     print(f'Line {number_of_line}')
 
-print()
 
 
-
+print('\n \t 0 squared is 0 etc.: ')
 # ad6) print: 
 """ 0 squared is 0
     1 squared is 1
@@ -117,11 +136,12 @@ print()
     3 squared id 9
     4 squared id 16"""
 
-for number_of_line in range(5): 
+for number_of_line in range(number_of_lines): 
     print(f'{number_of_line} squared is {number_of_line ** 2}')
 
-print()
 
+
+print('\n \t X X X X X etc.: ')
 # ad7) print: 
 """ X X X X X 
     X X X X X
@@ -130,13 +150,13 @@ print()
     X X X X X 
 condition: every print print only one 'X' """
 
-for number_of_line in range(5): 
-    for number_of_char in range(5): 
+for number_of_line in range(number_of_lines): 
+    for number_of_char in range(number_of_columns): 
         print('X ', end='')
     print()
 
 
-print()
+print('\n \t small multiplication table: ')
 
 # ad8) print small multiplication table: 
 """ 0       0       0       0       0
@@ -146,44 +166,45 @@ print()
     0       4       8       12      16
 """ 
 
-for number_of_line in range(5): 
-    for number_of_char in range(5): 
+for number_of_line in range(number_of_lines): 
+    for number_of_char in range(number_of_columns): 
         print(number_of_line * number_of_char, end='\t')
     print()
 
-print()
 
 
+print('\n \t X, two X, three X, etc.: ')
 # ad9) print: 
 """ X
     X X
     X X X
     X X X X"""
 
-for number_of_line in range(4): 
-    for number_of_char in range(4): 
+for number_of_line in range(number_of_lines): 
+    for number_of_char in range(number_of_columns): 
         if number_of_line >= number_of_char:
             print('X', end=' ')
     print()
 
-print()
 
 
+
+print('\n \t first line, not first, not first etc.: ')
 # ad10) print: 
 """     first line
         not first
         not first
         not first""" 
 
-for number_of_line in range(4): 
+for number_of_line in range(number_of_lines): 
     if number_of_line == 0: 
         print('first line')
     else: 
         print('not first')
 
-print()
 
 
+print('\n \t circuit of square by X:')
 # ad11) print: (print must contain only one 'x')
 """     X X X X X X
         X         X
@@ -192,13 +213,16 @@ print()
         X         X
         X X X X X X """ 
 
-for number_of_line in range(6): 
-    for number_of_char in range(6): 
-        if number_of_line in (0, 5) or number_of_char in (0, 5): 
+for number_of_line in range(number_of_lines): 
+    for number_of_char in range(number_of_columns): 
+        if number_of_line in (0, number_of_lines-1) or number_of_char in (0, number_of_columns-1): 
             print('X', end=' ')
         else: 
             print(' ', end=' ')
     print()
+
+
+print()
 
 
 
