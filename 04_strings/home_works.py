@@ -21,6 +21,33 @@
         X X X X X 
         X X X X X
         X X X X X 
+
+    8) small multiplication table:
+        0       0       0       0       0
+        0       1       2       3       4
+        0       2       4       6       8
+        0       3       6       9       12
+        0       4       8       12      16
+
+    9) print: 
+        X
+        X X
+        X X X
+        X X X X
+
+    10) print: 
+        first line
+        not first
+        not first
+        not first
+
+    11) print: 
+        X X X X X X
+        X         X
+        X         X
+        X         X
+        X         X
+        X X X X X X
     """
 
 """ 
@@ -107,4 +134,71 @@ for number_of_line in range(5):
     for number_of_char in range(5): 
         print('X ', end='')
     print()
+
+
+print()
+
+# ad8) print small multiplication table: 
+""" 0       0       0       0       0
+    0       1       2       3       4
+    0       2       4       6       8
+    0       3       6       9       12
+    0       4       8       12      16
+""" 
+
+for number_of_line in range(5): 
+    for number_of_char in range(5): 
+        print(number_of_line * number_of_char, end='\t')
+    print()
+
+print()
+
+
+# ad9) print: 
+""" X
+    X X
+    X X X
+    X X X X"""
+
+for number_of_line in range(4): 
+    for number_of_char in range(4): 
+        if number_of_line >= number_of_char:
+            print('X', end=' ')
+    print()
+
+print()
+
+
+# ad10) print: 
+"""     first line
+        not first
+        not first
+        not first""" 
+
+for number_of_line in range(4): 
+    if number_of_line == 0: 
+        print('first line')
+    else: 
+        print('not first')
+
+print()
+
+
+# ad11) print: (print must contain only one 'x')
+"""     X X X X X X
+        X         X
+        X         X
+        X         X
+        X         X
+        X X X X X X """ 
+
+for number_of_line in range(6): 
+    for number_of_char in range(6): 
+        if number_of_line in (0, 5) or number_of_char in (0, 5): 
+            print('X', end=' ')
+        else: 
+            print(' ', end=' ')
+    print()
+
+
 
