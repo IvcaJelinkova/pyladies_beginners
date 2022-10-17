@@ -71,9 +71,11 @@ else:
     print('You are male.\n')
 """ 
 
-# ad3) count a letter in text: 
+# ad3+ad16) count a letter in text: 
 text = """Léta tam stál, stojí tam dál
-pivovar u cesty, každý ho znal
+pivovar.""".lower()
+""" 
+ u cesty, každý ho znal
 léta tam stál, stát bude dál
 ten kdo zná Jarošov, zná pivovar.Bíla pěna, láhev orosená
 chmelový nektar já znám
@@ -81,12 +83,19 @@ jen jsem to zkusil a jednou se napil
 od těch dob žízeň mám.Bída a hlad, kolem šel strach
 když bylo piva dost, mohl ses smát
 třista let stál, stát bude dál
-ten kdo zná Jarošov zná pivovar.""".lower()
+ten kdo zná Jarošov zná pivovar..lower()
+""" 
+
 
 letter = 'a'
 count = text.count(letter)
 print(f'Count of a letter {letter} in your text: ', count, '\n')
 
+number_of_letters = 0
+for char in text: 
+    if not char in '!"#$%&\'()*+,-./:;<=>?@[\]^_{|}~ \n\t': 
+        number_of_letters += 1
+print(f'Number of letters is {number_of_letters}.\n')
 
 
 # user enter quantity of lines and columns: 
@@ -225,6 +234,12 @@ for number_of_line in range(number_of_lines):
 
 
 print()
+
+
+for i in 'Ahoj světe': 
+    print(i)
+
+
 
 
 
