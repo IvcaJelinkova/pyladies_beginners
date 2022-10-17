@@ -90,44 +90,24 @@ print(f'Count of a letter {letter} in your text: ', count, '\n')
 
 
 # user enter quantity of lines and columns: 
-def input_positive_integer(number_of_lines, number_of_columns): 
-    """Returns True, if two given numbers are positive integers. Otherwise returns False. """
-    if number_of_lines.isalnum() and number_of_columns.isalnum():
-        print('You entered numbers. ')
-        if number_of_lines > 0 and number_of_columns > 0: 
-            print('You entered positive numbers. Jej :-) ')
-            return True
-        print('You entered numbers, but smaller than 0. ')
-        return False
-    print('You entered text. :-( ')
-    return False
-     
-
-
-while True: 
-    number_of_lines = input('How many lines do you want? ')
-    number_of_columns = input('How many columns do you want? ')
-
-    is_positive_integers = input_positive_integer(number_of_lines, number_of_columns)
-    if is_positive_integers: 
-        number_of_lines = int(number_of_lines)
-        number_of_columns = int(number_of_columns)
-        print('I have positive integers! :-) ')
-        break
-    
-    """ 
-    try: 
-        #print('sem v try')
-        number_of_lines = int(number_of_lines)
-        number_of_columns = int(number_of_columns)
-        if number_of_lines <= 0 or number_of_columns <= 0: 
-            print('Enter numbers bigger than 0! ')
+def input_positive_integer(query='Please, insert a possitive number. '): 
+    """Returns positive integer. """
+    while True: 
+        input_result = input(f'{query} ')
+        try: 
+            #print('sem v try')
+            input_number = int(input_result)
+        except ValueError: 
+            print(f'{input_result} is not a number. Please, try again.\n ')
             continue
-        break
-    except ValueError: 
-        print('Enter numbers!\n')
-        continue
-    """ 
+        if input_number <= 0: 
+                print(f'{input_number} is <= 0. Please, insert number bigger than 0! ')
+                continue
+        return input_number
+
+
+number_of_lines = input_positive_integer('How many lines do you want? ')
+number_of_columns = input_positive_integer('How many columns do you want? ')
 
 
  
