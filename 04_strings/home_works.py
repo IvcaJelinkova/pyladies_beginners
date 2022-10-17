@@ -55,20 +55,20 @@
 string1 = input('Enter a string to know, if it\'s in the next string: ').lower()
 string2 = input('Enter the second string: ').lower()
 if string1 in string2: 
-    print('Yes, the first string is in the second. \n')
+    print('Yes, the first string is in the second.\n')
 elif string2 in string1: 
-    print('Yes, the second string is in the first. \n')
+    print('Yes, the second string is in the first.\n')
 else: 
-    print('No, the first string is not in the second or conversely. \n')
+    print('No, the first string is not in the second or conversely.\n')
 
 
 # ad2) are you male or female by last name: 
 surname = input('Enter your surname: ').lower()
 
 if surname[-1:] in ('a', 'á'): 
-    print('You are female. \n')
+    print('You are female.\n')
 else: 
-    print('You are male. \n')
+    print('You are male.\n')
 """ 
 
 # ad3) count a letter in text: 
@@ -87,35 +87,57 @@ letter = 'a'
 count = text.count(letter)
 print(f'Count of a letter {letter} in your text: ', count, '\n')
 
+
+
+# user enter quantity of lines and columns: 
+def input_positive_integer(number_of_lines, number_of_columns): 
+    """Returns True, if two given numbers are positive integers. Otherwise returns False. """
+    if number_of_lines.isalnum() and number_of_columns.isalnum():
+        print('You entered numbers. ')
+        if number_of_lines > 0 and number_of_columns > 0: 
+            print('You entered positive numbers. Jej :-) ')
+            return True
+        print('You entered numbers, but smaller than 0. ')
+        return False
+    print('You entered text. :-( ')
+    return False
+     
+
+
 while True: 
     number_of_lines = input('How many lines do you want? ')
     number_of_columns = input('How many columns do you want? ')
+
+    is_positive_integers = input_positive_integer(number_of_lines, number_of_columns)
+    if is_positive_integers: 
+        number_of_lines = int(number_of_lines)
+        number_of_columns = int(number_of_columns)
+        print('I have positive integers! :-) ')
+        break
+    
+    """ 
     try: 
         #print('sem v try')
         number_of_lines = int(number_of_lines)
         number_of_columns = int(number_of_columns)
-
-    except TypeError: 
-        print('Enter numbers bigger than 0! \n')
-        continue
+        if number_of_lines <= 0 or number_of_columns <= 0: 
+            print('Enter numbers bigger than 0! ')
+            continue
+        break
     except ValueError: 
-        print('Enter numbers > 0! \n')
+        print('Enter numbers!\n')
         continue
+    """ 
 
-    else: 
-        #print('teď v else')
-        if number_of_lines > 0 and number_of_columns > 0: 
-            break
-       
 
  
 
-print('\n \t a: ')
+print('\n\t a: ')
 # ad4) 'a' 4times under itself: 
 for i in range(number_of_lines): 
     print('a')
 
-print('\n \t Line 0 - ...: ')
+print('\n\t Line 0 - ...: ')
 # ad5) print:    
 """         Line 0
             Line 1
@@ -128,7 +150,7 @@ for number_of_line in range(number_of_lines):
 
 
 
-print('\n \t 0 squared is 0 etc.: ')
+print('\n\t 0 squared is 0 etc.: ')
 # ad6) print: 
 """ 0 squared is 0
     1 squared is 1
@@ -141,7 +163,7 @@ for number_of_line in range(number_of_lines):
 
 
 
-print('\n \t X X X X X etc.: ')
+print('\n\t X X X X X etc.: ')
 # ad7) print: 
 """ X X X X X 
     X X X X X
@@ -156,7 +178,7 @@ for number_of_line in range(number_of_lines):
     print()
 
 
-print('\n \t small multiplication table: ')
+print('\n\t small multiplication table: ')
 
 # ad8) print small multiplication table: 
 """ 0       0       0       0       0
@@ -173,7 +195,7 @@ for number_of_line in range(number_of_lines):
 
 
 
-print('\n \t X, two X, three X, etc.: ')
+print('\n\t X, two X, three X, etc.: ')
 # ad9) print: 
 """ X
     X X
@@ -189,7 +211,7 @@ for number_of_line in range(number_of_lines):
 
 
 
-print('\n \t first line, not first, not first etc.: ')
+print('\n\t first line, not first, not first etc.: ')
 # ad10) print: 
 """     first line
         not first
@@ -204,7 +226,7 @@ for number_of_line in range(number_of_lines):
 
 
 
-print('\n \t circuit of square by X:')
+print('\n\t circuit of square by X:')
 # ad11) print: (print must contain only one 'x')
 """     X X X X X X
         X         X
