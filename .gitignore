@@ -2,4 +2,3 @@ venv
 __pycache__
 .gitignore
 .DS_Store
-du_opravar.py
