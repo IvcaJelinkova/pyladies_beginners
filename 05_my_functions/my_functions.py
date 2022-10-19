@@ -1,10 +1,10 @@
 def yes_or_no(question):
     """Returns True or False according to the answer from the user. """
     while True: 
-        answer = input(question).lower()
-        if answer == 'yes': 
+        answer = input(question).lower().strip()
+        if answer == 'yes' or answer == 'y': 
             return True
-        elif answer == 'no': 
+        elif answer == 'no' or answer == 'n': 
             return False
         else: 
             print('I do not understand! Answer "yes" or "no". ')
@@ -13,6 +13,8 @@ if yes_or_no('Do you want to play a game? '):
     print('OK! But you have to write it. :-)\n')
 else: 
     print('It is a pity.\n')
+
+
 
 
 def sea_exploration(depth): 
