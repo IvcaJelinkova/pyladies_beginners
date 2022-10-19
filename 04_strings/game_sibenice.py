@@ -10,11 +10,12 @@
 
 
 from random import choice
+from game_sibenice_picture import picture
 
-guess_word = choice(['home', 'terminal', 'hermiona'])
+guess_word = choice(['home', 'terminal', 'hermiona', 'chocolate', 'sleep'])
 word = len(guess_word) * '_ '
 print(f'Your guessed word is: {word}.\n\t', guess_word)
-tries = 9
+tries = 10
 tried_char = []
 
 def swap(char, position, word): 
@@ -27,18 +28,23 @@ def swap(char, position, word):
 
 while True: 
     char = input('Your guessed letter: ')
-    if char in guess_word: 
-        position = guess_word.index(char) * 2
-        print(position+1)
-        word = swap(char, position, word)
+    if len(char) == 1 and char.isalpha(): 
+        print(f'My input is {len(char)} long.')
+        if char in guess_word: 
+            position = guess_word.index(char) * 2
+            print(position+1)
+            word = swap(char, position, word)
+        else: 
+            tries -= 1
+            print(f'Number of remaining tries: {tries}. ')
+            print(picture(9-tries))
+            tried_char.append(char)
+            if tries == 0: 
+                print(f'You lost this game. Your wrong tries were: {tried_char}')
+                break
+        print(f'Your guessed word now looks like: {word}. ')
     else: 
-        tries -= 1
-        print(f'Number of remaining tries: {tries}. ')
-        tried_char.append(char)
-        if tries == 0: 
-            print(f'You lost this game. Your wrong tries were: {tried_char}')
-            break
-    print(f'Your guessed word now looks like: {word}. ')
+        print('Please, write one letter!')
 
     if not '_' in word: 
         print('You won, congratulation. :-) ')
