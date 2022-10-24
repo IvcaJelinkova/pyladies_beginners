@@ -29,11 +29,18 @@ def swap(char, position, word):
 while True: 
     char = input('Your guessed letter: ')
     if len(char) == 1 and char.isalpha(): 
-        print(f'My input is {len(char)} long.')
         if char in guess_word: 
-            position = guess_word.index(char) * 2
-            print(position+1)
-            word = swap(char, position, word)
+            quantity_of_char = guess_word.count(char)
+            if quantity_of_char > 1: 
+                position = -1
+                #for more appereance of char: 
+                for quantity in range(quantity_of_char): 
+                    position = guess_word.index(char, position + 1) * 2
+                    word = swap(char, position, word)
+                    position = int(position / 2)
+            else: 
+                position = guess_word.index(char) * 2
+                word = swap(char, position, word)
         else: 
             tries -= 1
             print(f'Number of remaining tries: {tries}. ')
@@ -42,7 +49,7 @@ while True:
             if tries == 0: 
                 print(f'You lost this game. Your wrong tries were: {tried_char}')
                 break
-        print(f'Your guessed word now looks like: {word}. ')
+        print(f'Your guessed word now looks like: {word}.\n')
     else: 
         print('Please, write one letter!')
 
