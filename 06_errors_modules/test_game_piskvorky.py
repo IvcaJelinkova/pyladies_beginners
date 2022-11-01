@@ -1,12 +1,13 @@
-from game_piskvorky import rate_game, turn, players_move
+from game_piskvorky import rate_game, players_move
+from game_util import turn
 import pytest
 
 def test_rate_game(): 
     """Will test function rate_game. """
     assert rate_game('-----------') == '-'
-    assert rate_game('--o--xxx------') == 'x'
-    assert rate_game('xoxoxoxoxoxxooxo') == '!'
-    assert rate_game('---ooo--') == 'o'
+    assert rate_game('--o--xxx------') == '"x" won! Congratulation. :-) '
+    assert rate_game('xoxoxoxoxoxxooxo') == 'It is the draw! '
+    assert rate_game('---ooo--') == '"o" won! Congratulation. :-) '
 
 def test_turn(): 
     """Will test function turn. """
@@ -22,19 +23,19 @@ def test_bad_turn():
         turn('--------------------', 0, 'potato')
 
 
-""" 
-def test_allowed_players_move(): 
-    """Will test allowed players move. """
+
+#def test_allowed_players_move(): 
+    """Will test allowed players move. """ """ 
     assert players_move('--------------------', 'o')
     pass
 
-def test_not_allowed_players_move(): 
+def test_not_allowed_players_move():  """  
     """Will test not allowed players move. """
     pass
 
 
-def test_computers_move(): 
-    """ """
-    assert computers_move('o-------------------', 'x') == ''
-    pass #random cannot be tested
-""" 
+#def test_computers_move(): 
+    #""" """
+    #assert computers_move('o-------------------', 'x') == ''
+    #pass #random cannot be tested
+

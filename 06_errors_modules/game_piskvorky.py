@@ -1,6 +1,6 @@
 # game_piskvorky.py
-
-import random
+from game_ai import computers_move
+from game_util import turn
 
 def rate_game(field): 
     """It evaluates the game. Returns 'x' for the x-winner,
@@ -17,23 +17,6 @@ def rate_game(field):
         return '-'
 
 
-def turn(field, position, symbol): 
-    """Returns the game field with new symbol situated in the given positon. 
-    'field' is the game field, on which we play, 
-    'position' is the number of field, starts from 0 to 19, 
-    'symbol' can be 'x' or 'o', according to which symbol the player are playing with. """
-    if 0<=position<20:
-        if field[position] == '-': 
-            if symbol in 'xo': 
-                start = field[:position]
-                end = field[position+1:]
-                new_field = start+symbol+end
-                return new_field
-            else: 
-                raise ValueError(f'You cannot play with "{symbol}". Insert "x" or "o". ')
-        else: 
-            raise ValueError(f'You cannot play to this position. Field number {position}. is full now. ')
-    raise ValueError(f'You cannot play to {position}. Insert the number from 0 to 19. ')
 
 
 def players_move(field, symbol): 
@@ -58,19 +41,9 @@ def players_move(field, symbol):
                 return new_field
 
 
-def computers_move(field, symbol): 
-    """Returns the game field with a computers move.         
-    'field' is the game field, on which we play, 
-    'symbol' can be 'x' or 'o', according to which symbol the computer are playing with. """ 
-    while True:
-        position = random.randrange(0, 20)
-        print(position)
-        if field[position] == '-': 
-            new_field = turn(field, position, symbol)
-            return new_field
-
 
 def piskvorky1d(): 
+    """Makes the field. Call computers and players moves, print the game state and ends the game. """
     field = '-' * 20
     while '-' in field: 
         field = players_move(field, 'x')
@@ -89,8 +62,6 @@ def piskvorky1d():
         else: 
             print(game_state)
             break
-
-piskvorky1d()
 
 
 
