@@ -1,3 +1,4 @@
+from pyladies_beginners.06_errors_modules.game_piskvorky import players_move
 from game_piskvorky import rate_game, turn
 import pytest
 
@@ -21,3 +22,7 @@ def test_bad_turn():
         turn('x-------------------', 0, 'o')
         turn('--------------------', 0, 'potato')
 
+def test_players_move(): 
+    """Will test players move. """
+    #assert players_move('--------------------', 'o')
+    pass
