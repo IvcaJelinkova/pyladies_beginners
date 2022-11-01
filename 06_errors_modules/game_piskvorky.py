@@ -1,14 +1,18 @@
+# game_piskvorky.py
+
+import random
+
 def rate_game(field): 
     """It evaluates the game. Returns 'x' for the x-winner,
                 'o' for the o-winner, 
                 '!' for the draw, 
                 '-' for game is not over yet. """
     if 'xxx' in field: 
-        return 'x'
+        return '"x" won! Congratulation. :-) '
     elif 'ooo' in field: 
-        return 'o'
+        return '"o" won! Congratulation. :-) '
     elif '-' not in field: 
-        return '!'
+        return 'It is the draw! '
     else: 
         return '-'
 
@@ -44,7 +48,7 @@ def players_move(field, symbol):
             print('This is not a number. Please, try again. ')
         else: 
             if position < 0: 
-                print(f'{position} is smaller than 0. You cannot play to this position! Try again. ')
+                print(f'You cannot play to {position}. position! Try number 0–19. ')
             elif position > 19: 
                 print(f'{position} is bigger than 19. You cannot play to this position! Please, try again. ')
             elif field[position] != '-':
@@ -53,8 +57,45 @@ def players_move(field, symbol):
                 new_field = turn(field, position, symbol)
                 return new_field
 
-#print(players_move('o-------------------', 'x'))
-        
+
+def computers_move(field, symbol): 
+    """Returns the game field with a computers move.         
+    'field' is the game field, on which we play, 
+    'symbol' can be 'x' or 'o', according to which symbol the computer are playing with. """ 
+    while True:
+        position = random.randrange(0, 20)
+        print(position)
+        if field[position] == '-': 
+            new_field = turn(field, position, symbol)
+            return new_field
+
+
+def piskvorky1d(): 
+    field = '-' * 20
+    while '-' in field: 
+        field = players_move(field, 'x')
+        print(field)
+        game_state = rate_game(field)
+        if game_state == '-': 
+            pass
+        else: 
+            print(game_state)
+            break
+        field = computers_move(field, 'o')
+        print(field)
+        game_state = rate_game(field)
+        if game_state == '-': 
+            pass
+        else: 
+            print(game_state)
+            break
+
+piskvorky1d()
+
+
+
+
+
 
 
 
