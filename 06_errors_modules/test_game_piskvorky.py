@@ -1,5 +1,4 @@
-from pyladies_beginners.06_errors_modules.game_piskvorky import players_move
-from game_piskvorky import rate_game, turn
+from game_piskvorky import rate_game, turn, players_move
 import pytest
 
 def test_rate_game(): 
@@ -22,7 +21,12 @@ def test_bad_turn():
         turn('x-------------------', 0, 'o')
         turn('--------------------', 0, 'potato')
 
-def test_players_move(): 
-    """Will test players move. """
+def test_allowed_players_move(): 
+    """Will test allowed players move. """
     #assert players_move('--------------------', 'o')
     pass
+
+def test_not_allowed_players_move(): 
+    """Will test not allowed players move. """
+    pass
+
