@@ -40,13 +40,20 @@ def players_move(field, symbol):
         input_position = input('To which position you want to play? ')
         try: 
             position = int(input_position)
-            new_field = turn(field, position, symbol)
         except ValueError: 
-            print(f'This position is not suitable. Please, try again. ')
+            print('This is not a number. Please, try again. ')
         else: 
-            return new_field
+            if position < 0: 
+                print(f'{position} is smaller than 0. You cannot play to this position! Try again. ')
+            elif position > 19: 
+                print(f'{position} is bigger than 19. You cannot play to this position! Please, try again. ')
+            elif field[position] != '-':
+                print(f'This position is full. Try again. ')
+            else: 
+                new_field = turn(field, position, symbol)
+                return new_field
 
-print(players_move('--------------------', 'x'))
+#print(players_move('o-------------------', 'x'))
         
 
 
