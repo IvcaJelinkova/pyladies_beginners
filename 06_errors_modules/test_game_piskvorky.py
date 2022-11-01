@@ -21,12 +21,20 @@ def test_bad_turn():
         turn('x-------------------', 0, 'o')
         turn('--------------------', 0, 'potato')
 
+
+""" 
 def test_allowed_players_move(): 
     """Will test allowed players move. """
-    #assert players_move('--------------------', 'o')
+    assert players_move('--------------------', 'o')
     pass
 
 def test_not_allowed_players_move(): 
     """Will test not allowed players move. """
     pass
 
+
+def test_computers_move(): 
+    """ """
+    assert computers_move('o-------------------', 'x') == ''
+    pass #random cannot be tested
+""" 
