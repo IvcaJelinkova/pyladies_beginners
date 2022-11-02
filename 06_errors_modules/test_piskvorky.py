@@ -137,7 +137,7 @@ def test_import_turn_of_player():
 
 @pytest.mark.level(31)
 def test_players_move_x_0(push_input):
-    """turn of the player: X to the position 0 on the empty field. """
+    """turn of the player: 'x' to the position 0 on the empty field. """
     from game_piskvorky import players_move
     push_input('0')
     assert players_move('--------------------', 'x') == 'x-------------------'
@@ -145,7 +145,7 @@ def test_players_move_x_0(push_input):
 
 @pytest.mark.level(31)
 def test_players_move_o_19(push_input):
-    """turn hráče: O na pozici 19 na prázdné field"""
+    """turn of the player: 'o' to the position 19 on the empty field. """
     from game_piskvorky import players_move
     push_input('19')
     assert players_move('--------------------', 'o') == '-------------------o'
@@ -181,12 +181,12 @@ def test_import_computers_turn():
 
 
 @pytest.mark.level(41)
-def test_computers_move_prazdne():
+def test_computers_move_empty():
     """turn of the computer on the empty field"""
     from game_ai import computers_move
     for symbol in 'ox':
         result = computers_move('-' * 20, symbol)
-        assert len(result) == 20, result + ': Wrong lengt of the field'
+        assert len(result) == 20, result + ': Wrong length of the field'
         assert result.count('-') == 19, result + ': Wrong number of dashes'
         assert result.count(symbol) == 1, result + ': Wrong number of symbols ' + symbol
 
@@ -255,5 +255,5 @@ def push_input(monkeypatch):
         return answer
     monkeypatch.setattr(builtins, 'input', pushed_input)
     yield _give_input
-    # Kontrola, že všechno ze inputu bylo přečteno:
+    # Kontrola, že všechno z inputu bylo přečteno:
     assert input == [], 'Unread answers'

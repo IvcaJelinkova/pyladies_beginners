@@ -15,3 +15,5 @@ def computers_move(field, symbol):
         if field[position] == '-': 
             new_field = turn(field, position, symbol)
             return new_field
+        if '-' not in field: 
+            raise ValueError('The field is full. ')
