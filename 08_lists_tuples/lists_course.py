@@ -13,6 +13,7 @@ prvni_prvek_druheho_seznamu = seznam_seznamu[1][0]
 print(prvni_prvek_druheho_seznamu)      # 4
 
 
+
 # tabulka male nasobilky
 def vytvor_radek_tabulky(cislo_radku, velikost):
     """Vrátí seznam – daný řádek tabulky s násobilkou"""
@@ -40,3 +41,5 @@ for radek in nasobilka:
     for cislo in radek:
         print(cislo, end=' ')
     print()
+
+
