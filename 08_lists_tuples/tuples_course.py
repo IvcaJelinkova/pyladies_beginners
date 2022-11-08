@@ -5,7 +5,7 @@ for i in range(10):
 print(seznam_dvojic)
 
 
+
 ix, ocko = 'xo'
 jedna, dva, tri = [1, 2, 3]
-
 print(ix, ocko, jedna, dva, tri)    # x o 1 2 3
