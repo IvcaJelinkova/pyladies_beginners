@@ -38,7 +38,7 @@ def computers_move(field, symbol):
             elif 'xx-' in field:    # the player has advantage
                 position_xx_ = field.index('xx-')
                 print(f'\tPosition_xx- = {position_xx_}')
-                new_field = turn(field, position_xx_+3, symbol)
+                new_field = turn(field, position_xx_+2, symbol)
                 return new_field
 
             elif 'x--x' in field:    # the player has small advantage
