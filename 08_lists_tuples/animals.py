@@ -6,11 +6,11 @@ def make_list_of_animals():
     return animals
 
 # print(make_list_of_animals())
-
 animals = make_list_of_animals()
 # print(animals.pop())
 # print(animals)
 # print(make_list_of_animals())
+
 
 
 def filter_short_names(animals): 
@@ -24,6 +24,7 @@ def filter_short_names(animals):
 print(filter_short_names(animals))
 
 
+
 def filter_c(animals): 
     """Gets a list of strings, returns list of those which starts on 'k'. """
     starts_on_c = []
@@ -33,6 +34,7 @@ def filter_c(animals):
     return starts_on_c
 
 print(filter_c(animals))
+
 
 
 def contains(list, word): 
@@ -45,13 +47,14 @@ def contains(list, word):
 print(contains(animals, 'cat'))
 
 
+
 def without_the_first(list): 
     """Gets a list of names and returns the list with all of elements without the first. """
     return list[1:]
 
-
 print(animals)
 print(without_the_first(animals))
+
 
 
 def sort_from_the_second_letter(list): 
@@ -69,4 +72,6 @@ def sort_from_the_second_letter(list):
 zvirata = ["králík", "andulka", "pes", "kočka", "had"]
 print(zvirata)
 print(sort_from_the_second_letter(zvirata))
+
+
 
