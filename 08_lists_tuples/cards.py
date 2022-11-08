@@ -15,14 +15,9 @@ def make_a_deck_of_cards():
             tuple = (str(value), color)
             deck_of_cards.append(tuple)
             tuple = ''
-    print(len(deck_of_cards))
-    print(type(deck_of_cards))
-    """ 
-    for i in range(len(deck_of_cards)): 
+    shuffled_deck_of_cards = random.sample(deck_of_cards, len(deck_of_cards))
 
-        shuffled_deck_of_cards = 
-    """
-    return deck_of_cards
+    return shuffled_deck_of_cards
 
 print((make_a_deck_of_cards()))
 
